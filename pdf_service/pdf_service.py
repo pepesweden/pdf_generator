@@ -14,10 +14,12 @@ def generate_pdf(text: str) -> bytes:
     print("📄 PDF-genererad, antal bytes:", len(pdf_string))  # <- kontroll av längden på strängen in i PDF
     return pdf_string
 
+text = input("Skriv in text som ska sparas i PDF: ")
+filename = input("Skriv in filnamn, glöm inte .pdf: ")
 
 # Testkörning
 if __name__ == "__main__":
-    pdf_string = generate_pdf("Hej Patrick! Detta är din första PDF via script.")
-    with open("test.pdf", "wb") as f:
+    pdf_string = generate_pdf(text)
+    with open(filename, "wb") as f:
         f.write(pdf_string)
-    print("✅ PDF sparad som test.pdf")
+    print("✅ PDF sparad som: " + filename)

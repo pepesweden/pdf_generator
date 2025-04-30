@@ -30,8 +30,9 @@ build/
 node_modules/
 
 
-#wordfile e.g. content
+#dokument, wordfiler,pdf etc  e.g. content
 *.docx
+*.pdf
 
 #Bilder e.g. content
 *.jpeg

@@ -14,8 +14,8 @@ def generate_pdf(text: str) -> bytes:
     print("📄 PDF-genererad, antal bytes:", len(pdf_string))  # <- kontroll av längden på strängen in i PDF
     return pdf_string
 
-text = input("Skriv in text som ska sparas i PDF: ")
-filename = input("Skriv in filnamn, glöm inte .pdf: ")
+#text = input("Skriv in text som ska sparas i PDF: ")
+#filename = input("Skriv in filnamn, glöm inte .pdf: ")
 
 # Testkörning
 if __name__ == "__main__":

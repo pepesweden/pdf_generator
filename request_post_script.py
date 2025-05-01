@@ -1,6 +1,6 @@
 import requests
 
-url = "http://localhost:5001/generate_pdf"
+url = "http://localhost:5002/generate_pdf"
 
 headers = {
     "Content-Type": "application/json",

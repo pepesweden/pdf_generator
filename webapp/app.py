@@ -3,7 +3,7 @@ import requests
 
 app = Flask(__name__)
 
-PDF_SERVICE_URL = "http://localhost:5001/generate_pdf"
+PDF_SERVICE_URL = "http://pdf_service:5002/generate_pdf"
 
 @app.route("/", methods=["GET"])
 def index():

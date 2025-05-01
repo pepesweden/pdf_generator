@@ -1,63 +1,86 @@
-# Automation Project Scaffold 🚀
+# 🧾 Microservice PDF Generator – Dockerized Demo Project
 
-Detta är en mall för att snabbt starta nya automationsprojekt.  
-Innehåller grundstruktur för:
+## 📦 Projektstruktur
 
-- Backend (Flask-baserad server)
-- Webapp (HTML + CSS + JS)
-- Infrastruktur (Terraform templates)
-
----
-
-## 🛠️ Struktur
-
-```bash
-automation-project_template/
-├── backend/
-│   ├── main.py        # Startar appen
-│   ├── config.py      # Konfiguration
-│   ├── models/        # Backend-modeller
-│   ├── utils/         # Hjälpfunktioner
+```
+.
+├── backend/                # Reservdel från tidigare struktur – ej aktiv i Compose
+├── pdf_service/            # Flask-app som genererar PDF från text
+│   ├── Dockerfile
+│   ├── app.py
+│   ├── pdf_service.py
 │   └── requirements.txt
-├── webapp/
-│   ├── static/        # CSS och JS
-│   └── templates/     # HTML-filer
-├── infrastructure/    # Terraform-filer
-└── README.md
+├── webapp/                 # Flask-webbapp med HTML-formulär
+│   ├── Dockerfile
+│   ├── app.py
+│   ├── templates/
+│   │   └── index.html
+│   ├── static/
+│   │   └── style.css (valfritt)
+│   └── requirements.txt
+├── infrastructure/         # Innehåller Docker Compose och framtida infra (Terraform, etc.)
+│   └── docker-compose.yml
+└── README.md               # Denna fil
 ```
 
 ---
 
-## 🚀 Hur skapar jag ett nytt projekt?
+## 🚀 Så kör du projektet
 
-1. Klicka på **"Use this template"** ovanför.
-2. Välj nytt namn och skapa nytt repo.
-3. Klona ditt nya repo till din dator:
-   ```bash
-   git clone https://github.com/ditt-användarnamn/ditt-nya-repo.git
-   cd ditt-nya-repo
-   ```
-4. Starta backend-servern:
-   ```bash
-   cd backend
-   python3 main.py
-   ```
+1. Skapa ett nätverk och starta tjänsterna med Compose:
+```bash
+cd infrastructure
+docker compose up --build
+```
+
+2. Gå till `http://localhost:5001/` i webbläsaren  
+3. Fyll i text → klicka på **Skapa PDF** → PDF genereras av `pdf_service`
 
 ---
 
-## 📋 Kom ihåg
+## 🐳 Mikrotjänster
 
-- Lägg till eventuella Python-paket i `requirements.txt`
-- Skapa `.env`-fil om du använder hemliga nycklar (och ignorera med `.gitignore`)
-- Du kan fritt ändra strukturen efter behov!
-
----
-
-## 📢 Tips
-
-- Använd `url_for('static', filename='style.css')` i dina HTML-filer.
-- Håll varje tjänst (`models/`, `utils/`) modulariserad för skalbarhet.
+| Tjänst       | Port     | Beskrivning                            |
+|--------------|----------|-----------------------------------------|
+| `webapp`     | `5001`   | HTML-gränssnitt + skickar text till PDF |
+| `pdf_service`| `5002`   | Tar emot text och returnerar PDF       |
 
 ---
 
-# 🚀 Happy Building!
+## 🧪 Utvecklartips
+
+- Ändringar i koden kräver rebuild:  
+  ```bash
+  docker compose up --build
+  ```
+- Loggar:
+  ```bash
+  docker compose logs -f
+  ```
+- Stoppa allt:
+  ```bash
+  docker compose down
+  ```
+
+---
+
+## 🧠 Lärdomar
+
+- Flask i mikroformat
+- Kommunikation mellan containrar
+- Docker Compose som orkestrator
+- HTTP mellan backend-tjänster
+- Miljö utan extern server
+
+---
+
+## 🛠️ Nästa steg
+
+- 🧾 Lägga till volymer för att spara genererade PDF:er
+- 🔐 Hantera miljövariabler
+- 📦 Paketera för produktion
+- 🐘 Lägg till databas eller andra mikrotjänster
+
+---
+
+Byggt med ❤️ av Patrick.

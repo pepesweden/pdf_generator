@@ -1,4 +1,6 @@
-# 🧾 Microservice PDF Generator – Dockerized Demo Project
+# 🧾 Microservice PDF Generator – Dockerized Demo Project  
+
+Projekt för att ffa lära sig containersering och kommunikation mellan microtjänster med Docker compose  
 
 ## 📦 Projektstruktur
 
